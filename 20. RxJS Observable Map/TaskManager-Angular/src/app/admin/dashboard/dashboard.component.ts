@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/login.service';
 import { DashboardService } from '../../dashboard.service';
 
 @Component({
@@ -25,10 +26,11 @@ export class DashboardComponent implements OnInit
   TeamMembersSummary: any = [];
   TeamMembers: any = [];
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService, private login :LoginService) { }
 
   ngOnInit()
   {
+    this.login.currentUserName;
     this.Designation = 'Team Leader';
     this.Username = 'Scott Smith';
     this.NoOfTeamMembers = 67;

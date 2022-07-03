@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Project } from './project';
 import { map } from "rxjs/operators";
@@ -15,6 +15,17 @@ export class ProjectsService
 
   getAllProjects(): Observable<Project[]>
   {
+    // var currentUser = {token:''}
+    // var headers = new HttpHeaders();
+    // headers = headers.set('Authorization','Bearer');
+
+    // if (sessionStorage['currentUser'] != null){
+
+    //   currentUser = JSON.parse(sessionStorage['currentUser']);
+    //   headers = headers.set('Authorization','Bearer ' + currentUser.token);
+
+    // }
+
     return this.httpClient.get<Project[]>("http://localhost:9090/api/projects", { responseType: "json" })
       .pipe(map(
         (data: Project[]) =>
@@ -30,7 +41,17 @@ export class ProjectsService
 
   insertProject(newProject: Project): Observable<Project>
   {
-    return this.httpClient.post<Project>("http://localhost:9090/api/projects", newProject, { responseType: "json" });
+    // var currentUser = {token:''}
+    // var headers = new HttpHeaders();
+    // headers = headers.set('Authorization','Bearer');
+
+    // if (sessionStorage['currentUser'] != null){
+
+    //   currentUser = JSON.parse(sessionStorage['currentUser']);
+    //   headers = headers.set('Authorization','Bearer ' + currentUser.token);
+
+    // }
+    return this.httpClient.post<Project>("http://localhost:9090/api/projects", newProject, {responseType: "json" });
   }
 
   updateProject(existingProject: Project): Observable<Project>
